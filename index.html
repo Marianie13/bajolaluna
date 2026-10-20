@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-block:env(safe-area-inset-top,0px) env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<title>Bajo la misma luna</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap">
+<style>
+/* Layout: la ilustración del collage queda fija detrás, con un leve acercamiento al templo que se abre hacia la luna al bajar; el poema sube en tiras de papel rasgado */
+:root{
+  --paper:#8e8780;
+  --paper-lt:#c3bcb2;
+  --ink:#141010;
+  --oxide:#7a221c;
+  --ember:#ff7a52;
+  --text:#1a1413;
+  --display:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;
+  --body:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --type:"Courier Prime","Courier New",monospace;
+  --p:0;
+  color-scheme:light;
+}
+html,body{background:var(--paper);color:var(--text)}
+body{font-family:var(--body);margin:0;overflow-x:hidden}
+
+/* ---------- fondo ---------- */
+.scene{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:var(--paper)}
+.scene{background:#2a2422}
+.art{position:absolute;left:50%;top:50%;width:100%;height:100%;transform:translate(-50%,-50%)}
+.art img{width:100%;height:100%;display:block;max-width:none;object-fit:cover;filter:sepia(.08)}
+.moonglow{position:absolute;left:54%;top:34.6%;width:44%;aspect-ratio:1;max-width:none;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle, rgba(170,60,45,.0) 38%, rgba(170,60,45,.28) 52%, rgba(170,60,45,0) 72%);
+  opacity:calc(var(--p) * 1);mix-blend-mode:screen}
+.lamp{position:absolute;width:14%;aspect-ratio:1;max-width:none;transform:translate(-50%,-50%);border-radius:50%;
+  background:radial-gradient(circle, rgba(255,170,120,.85) 0%, rgba(255,90,60,.35) 30%, rgba(255,90,60,0) 70%);
+  mix-blend-mode:screen;opacity:0;transition:opacity 1.6s ease}
+body.lit .lamp{opacity:1;animation:flicker 3.2s ease-in-out infinite}
+@keyframes flicker{0%,100%{filter:brightness(1)}45%{filter:brightness(.82)}60%{filter:brightness(1.08)}}
+.veil{position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 50% 50%, transparent 55%, rgba(20,16,16,.35) 100%)}
+
+/* ---------- contenido ---------- */
+main{position:relative;z-index:1;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:6vh 30vh}
+.sheet{position:relative;background-color:var(--paper-lt);background-size:220px 220px;
+  padding:1.5rem 1.6rem 1.6rem;box-shadow:0 2px 0 rgba(20,16,16,.08)}
+.hero{max-width:30rem;margin:0 auto 30vh;transform:rotate(-1deg)}
+.eyebrow{font-family:var(--type);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);opacity:.75}
+.jp-top{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,7.5vw,2.6rem);letter-spacing:.08em;color:var(--oxide);line-height:1.2}
+.for{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,5.5vw,1.8rem);color:var(--ink);margin-top:.3rem}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(2.3rem,9vw,4rem);line-height:1.05;
+  margin:.35em 0 .25em;text-wrap:balance;color:var(--ink)}
+.hero h1 em{font-style:normal;color:var(--oxide)}
+.hint{font-style:italic;font-size:1.1rem;margin:0;opacity:.85}
+
+.poem{display:flex;flex-direction:column;gap:30vh;max-width:30rem;margin-inline:auto}
+.stanza{font-size:clamp(1.25rem,4.4vw,1.5rem);line-height:1.5;transition:opacity 1s ease}
+.stanza:nth-child(odd){transform:rotate(.8deg)}
+.stanza:nth-child(even){transform:rotate(-.7deg)}
+.stanza p{margin:0}
+.mark{position:absolute;top:-12px;right:18px;width:30px;height:30px;background:var(--oxide);color:var(--paper-lt);
+  font-family:var(--display);font-size:.95rem;display:grid;place-items:center}
+.js .stanza.wait{opacity:.15}
+
+.finale{max-width:30rem;margin:22vh auto 0;display:flex;flex-direction:column;gap:3rem}
+.finale .stanza{background-color:var(--ink);color:#e6ddd2}
+.wish{display:flex;gap:1.4rem;align-items:flex-start;justify-content:center}
+.wish .jp{writing-mode:vertical-rl;font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,10vw,3.4rem);
+  letter-spacing:.12em;color:var(--ink);line-height:1.1}
+.wish .side{display:flex;flex-direction:column;gap:.8rem;padding-top:.6rem;min-width:0}
+.wish .romaji{font-family:var(--type);font-size:.75rem;letter-spacing:.18em;color:var(--oxide);text-transform:uppercase}
+.wish .name{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,6.5vw,2.4rem);line-height:1.15;color:var(--ink);text-wrap:balance}
+.wish .bb{font-size:clamp(2.6rem,11vw,3.8rem);letter-spacing:0;color:var(--oxide)}
+.wish .love{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,5.5vw,1.8rem);color:var(--ink);margin-top:-.4rem}
+.seal{width:54px;height:54px;border:2.5px solid var(--oxide);color:var(--oxide);font-family:var(--display);
+  font-size:1.5rem;display:grid;place-items:center;transform:rotate(-5deg);background:rgba(122,34,28,.06)}
+
+@media (prefers-reduced-motion:reduce){
+  .stanza{transition:none}
+  .js .stanza.wait{opacity:1}
+  body.lit .lamp{animation:none}
+}
+</style>
+
+<div class="scene" aria-hidden="true">
+  <div class="art">
+    <img src="fondo.jpg" alt="">
+    <div class="moonglow"></div>
+    <div class="lamp" style="left:30.1%;top:90.9%"></div>
+    <div class="lamp" style="left:58.5%;top:86.8%"></div>
+    <div class="lamp" style="left:76.1%;top:86.8%"></div>
+  </div>
+  <div class="veil"></div>
+</div>
+
+<main>
+  <header class="hero sheet">
+    <h1>Bajo la misma <em>luna</em></h1>
+  </header>
+
+  <section class="poem" aria-label="Poema">
+    <article class="stanza sheet"><span class="mark">一</span><p>Hay noches en las que la luna<br>parece detener el tiempo.</p></article>
+    <article class="stanza sheet"><span class="mark">二</span><p>Nadie le pide que brille,<br>nadie le recuerda que es hermosa.<br>Simplemente aparece,<br>y el cielo encuentra su sentido.</p></article>
+    <article class="stanza sheet"><span class="mark">三</span><p>Quizá cumplir años sea algo parecido:<br>no convertirse en alguien distinto,<br>sino descubrir, poco a poco,<br>todo lo que uno lleva dentro.</p></article>
+    <article class="stanza sheet"><span class="mark">四</span><p>Un año más de caminos recorridos,<br>de lugares que ya viven en la memoria,<br>de decisiones que cambiaron el rumbo<br>y de sueños que todavía esperan su estación.</p></article>
+    <article class="stanza sheet"><span class="mark">五</span><p>La luna no vuelve a ser la de anoche.<br>Aunque parezca la misma,<br>la noche que la contempla nunca se repite.</p></article>
+    <article class="stanza sheet"><span class="mark">六</span><p>Y así también ocurre con la vida:<br>cada año nos devuelve al día en que llegamos,<br>pero nunca somos exactamente quienes fuimos.</p></article>
+    <article class="stanza sheet"><span class="mark">七</span><p>Por eso, hoy no celebro solamente una fecha.<br>Celebro el comienzo de tu historia,<br>todo lo que te ha traído hasta aquí<br>y esa parte de tu destino<br>que todavía no conoce nadie.</p></article>
+    <article class="stanza sheet"><span class="mark">八</span><p>Que el tiempo te encuentre creciendo,<br>que el camino te sorprenda<br>y que, cuando mires hacia atrás,<br>reconozcas en cada etapa<br>una parte de la persona que eres.</p></article>
+  </section>
+
+  <section class="finale">
+    <article class="stanza sheet"><span class="mark">九</span><p>Hoy, bajo la misma luna,<br>el mundo tiene una razón más<br>para recordar este día.</p></article>
+    <div class="wish sheet">
+      <div class="jp" lang="ja">お誕生日<br>おめでとう</div>
+      <div class="side">
+        <span class="name bb">Bb</span>
+        <span class="love">Te quiero</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  var root=document.documentElement, body=document.body;
+  function hash(x,y,s){var h=x*374761393+y*668265263+s*982451653;h=(h^(h>>>13))*1274126177;return ((h^(h>>>16))>>>0)/4294967295;}
+  function sm(t){return t*t*(3-2*t);}
+  function vnoise(x,y,s){var xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi;
+    var a=hash(xi,yi,s),b=hash(xi+1,yi,s),c=hash(xi,yi+1,s),d=hash(xi+1,yi+1,s);
+    var u=sm(xf),v=sm(yf);return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;}
+  function fbm(x,y,s,o){var t=0,a=.5,f=1,n=0;for(var i=0;i<o;i++){t+=a*vnoise(x*f,y*f,s+i*17);n+=a;a*=.5;f*=2;}return t/n;}
+
+  /* textura de papel para las tiras */
+  var tex=(function(){var c=document.createElement('canvas');c.width=c.height=220;var x=c.getContext('2d'),img=x.createImageData(220,220),d=img.data;
+    for(var j=0;j<220;j++)for(var i=0;i<220;i++){var v=195+(fbm(i/40,j/40,77,4)-.5)*30+(Math.random()-.5)*16,k=(j*220+i)*4;d[k]=v;d[k+1]=v-6;d[k+2]=v-14;d[k+3]=255;}
+    x.putImageData(img,0,0);try{return c.toDataURL('image/png');}catch(e){return null;}})();
+  function tear(el){
+    var w=el.offsetWidth,h=el.offsetHeight;if(!w||!h)return;var pts=[],step=9,j=2.6,x,y;
+    for(x=0;x<=w;x+=step)pts.push(x+'px '+(Math.random()*j)+'px');
+    for(y=0;y<=h;y+=step)pts.push((w-Math.random()*j)+'px '+y+'px');
+    for(x=w;x>=0;x-=step)pts.push(x+'px '+(h-Math.random()*j*1.6)+'px');
+    for(y=h;y>=0;y-=step)pts.push((Math.random()*j)+'px '+y+'px');
+    el.style.clipPath='polygon('+pts.join(',')+')';
+  }
+  function tearAll(){document.querySelectorAll('.sheet').forEach(function(s){
+    if(tex&&!s.matches('.finale .stanza'))s.style.backgroundImage='url('+tex+')';tear(s);});}
+
+  /* la imagen siempre cubre toda la pantalla, sin moverse */
+  var art=document.querySelector('.art'),R=1080/1802;
+  function fit(){var W=Math.max(innerWidth,document.documentElement.clientWidth),H=Math.max(innerHeight,(window.visualViewport&&visualViewport.height)||0);
+    var w=W,h=W/R;if(h<H){h=H;w=H*R;}art.style.width=Math.ceil(w)+2+'px';art.style.height=Math.ceil(h)+2+'px';}
+  fit();
+  function onScroll(){
+    var max=document.documentElement.scrollHeight-innerHeight;
+    var p=max>0?Math.min(1,Math.max(0,scrollY/max)):1;
+    root.style.setProperty('--p',p.toFixed(3));
+    body.classList.toggle('lit',p>0.86);
+  }
+  tearAll();onScroll();
+  addEventListener('scroll',onScroll,{passive:true});
+  var t;addEventListener('resize',function(){clearTimeout(t);fit();t=setTimeout(function(){tearAll();onScroll();},200);});
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(tearAll);
+
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduce&&'IntersectionObserver' in window){
+    root.classList.add('js');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('wait',!e.isIntersecting);});},{rootMargin:'0px 0px -10% 0px'});
+    document.querySelectorAll('.stanza').forEach(function(s){io.observe(s);});
+  }
+})();
+</script>
+
+</body>
+</html>
